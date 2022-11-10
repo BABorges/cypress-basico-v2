@@ -182,4 +182,8 @@ describe('Central de Atendimento ao Cliente TAT', function(){
         cy.get('#privacy a')
         .click()
     })
+
+    it('novo teste para testar o push', function(){
+        cy.get('#firstName').should('not.have.value')
+    })
 })
