@@ -131,7 +131,7 @@ describe('Central de Atendimento ao Cliente TAT', function(){
         cy.get('#firstName').type('Bruno')
         cy.get('#lastName').type('Borges')
         cy.get('#email').type('bruno@teste.com')
-        cy.get('#open-text-area').type('Fazendo o curso de Cypress básico!')
+        cy.get('#open-text-area').type('Fazendo o curso de Cypress básico')
         cy.get('#phone-checkbox').check()
         cy.get('button[type="submit"]').click()
         cy.get('.phone-label-span').should('be.visible')
