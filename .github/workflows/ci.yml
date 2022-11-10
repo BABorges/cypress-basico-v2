@@ -9,7 +9,7 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
-<<<<<<< HEAD
+//<<<<<<< HEAD
         uses: cypress-io/github-action@v2
 =======
         uses: cypress-io/github-action@v2
