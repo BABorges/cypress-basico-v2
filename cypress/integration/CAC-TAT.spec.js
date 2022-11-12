@@ -186,4 +186,16 @@ describe('Central de Atendimento ao Cliente TAT', function(){
     it('novo teste para testar o push', function(){
         cy.get('#firstName').should('not.have.value')
     })
+
+    it('preencha os campos obrigatórios e envie o formulário utilizando "cy.clock" e "cy.tick"', function(){
+        cy.get('#firstName').type('Bruno')
+        cy.get('#lastName').type('Borges')
+        cy.get('#email').type('bruno@teste.com') 
+        cy.get('#open-text-area').type('Fazendo o curso de Cypress básico')
+        cy.clock()
+        cy.contains('button','Enviar').click()
+        cy.get('.success').should('be.visible')
+        cy.tick(3000)
+        cy.get('.success').should('not.be.visible')
+    })
 })
