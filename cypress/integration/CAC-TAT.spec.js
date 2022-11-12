@@ -2,7 +2,7 @@
 
 describe('Central de Atendimento ao Cliente TAT', function(){
     this.beforeEach(function(){
-        cy.visit('./src/index.html')
+      cy.visit('./src/index.html')
     })
     
     it('verifica o título da aplicação', function(){
@@ -247,11 +247,22 @@ describe('Central de Atendimento ao Cliente TAT', function(){
         .should('not.be.visible')
     })
 
-    it.only('preenche área de texto usando o comando .invoke', function(){
-        const longText = Cypress._.repeat('1234567890', 20)
+    it('preenche área de texto usando o comando .invoke', function(){
+        const longText = Cypress._.repeat('12345 67890 ', 20)
         cy.get('#open-text-area')
         .should('not.have.value', longText)
         .invoke('val', longText) 
         .should('have.value', longText)
+    })
+
+    it('faz uma requisição HTTP', function(){
+        cy.request('https://www.google.com')
+        .should(function(response){
+            console.log(response)
+            const {status, statusText, body} = response
+            expect(status).to.be.equal(200)
+            expect(statusText).to.be.equal('OK')
+            expect(body).to.include('Google')
+        })
     })
 })
