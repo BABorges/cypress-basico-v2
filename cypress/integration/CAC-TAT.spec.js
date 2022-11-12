@@ -198,4 +198,18 @@ describe('Central de Atendimento ao Cliente TAT', function(){
         cy.tick(3000)
         cy.get('.success').should('not.be.visible')
     })
+
+    it.only('exibe mensagem de erro quando o telefone se tornar obrigatório mas não for preenchido antes do envio do formulário utilizando "cy.clock" e "cy.tick"', function(){
+        cy.get('#firstName').type('Bruno')
+        cy.get('#lastName').type('Borges')
+        cy.get('#email').type('bruno@teste.com')
+        cy.get('#open-text-area').type('Fazendo o curso de Cypress básico!')
+        cy.get('#phone-checkbox').check()
+        cy.clock()
+        cy.get('button[type="submit"]').click()
+        cy.get('.phone-label-span').should('be.visible')
+        cy.get('.error').should('be.visible')
+        cy.tick(3000)
+        cy.get('.error').should('not.be.visible')
+    })
 })
